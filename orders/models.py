@@ -1,19 +1,18 @@
-from django.db import models
-from django.db.models import Model, CASCADE
+from django.db.models import Model, CASCADE, CharField, IntegerField, ImageField, ForeignKey
+
 
 class Shop(Model):
-    name = models.CharField(max_length=255)
+    name = CharField(max_length=255)
+
 
 class Category(Model):
-    name = models.CharField(max_length=255)
+    name = CharField(max_length=255)
 
 
 class Product(Model):
-    name = models.CharField(max_length=255)
-    price = models.IntegerField(default=0)
-    img = models.ImageField(upload_to='')
-    description = models.CharField(max_length=500)
-    category = models.ForeignKey('Category', CASCADE)
-    shop = models.ForeignKey('Shop', CASCADE)
-
-
+    name = CharField(max_length=255)
+    price = IntegerField(default=0)
+    img = ImageField(upload_to='products/')
+    description = CharField(max_length=500)
+    category = ForeignKey('Category', CASCADE)
+    shop = ForeignKey('Shop', CASCADE)
