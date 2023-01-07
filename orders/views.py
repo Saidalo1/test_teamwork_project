@@ -18,7 +18,7 @@ class ProductModelViewSet(ModelViewSet):
     serializer_class = ProductModelSerializer
     parser_classes = (MultiPartParser,)
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_fields = {'price': ['gte', 'lte'], 'category': ['exact']}
+    filterset_fields = {'price': ['gte', 'lte'], 'category': ['exact'], 'shop': ['exact']}
     search_fields = ('name',)
 
     def destroy(self, request, *args, **kwargs):
