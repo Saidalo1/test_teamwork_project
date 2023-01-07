@@ -8,7 +8,7 @@ from users.serializers import GetMeModelSerializer
 class GetMeApiView(APIView):
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, pk=None, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         user = request.user
         serializer_data = GetMeModelSerializer(user).data
         return Response(serializer_data)
