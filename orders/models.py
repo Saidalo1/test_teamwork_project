@@ -9,6 +9,17 @@ class Category(Model):
     name = CharField(max_length=255)
 
 
+class SubCategory(Model):
+    name = CharField(max_length=50)
+    category = ForeignKey(Category, CASCADE)
+
+    def __str__(self):
+        return f'{self.category.name} --> {self.name}'
+
+    class Meta:
+        db_table = 'sub_category'
+
+
 class Product(Model):
     name = CharField(max_length=255)
     price = IntegerField(default=0)

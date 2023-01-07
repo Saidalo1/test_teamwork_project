@@ -3,7 +3,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework.parsers import MultiPartParser
 from rest_framework.viewsets import ModelViewSet
 
-from orders.models import Shop, Product
+from orders.models import Shop, Product, Category
 from orders.serializers import ShopModelSerializer, ProductModelSerializer, CategoryModelSerializer
 from shared.django import delete_main_photo
 
@@ -27,5 +27,5 @@ class ProductModelViewSet(ModelViewSet):
 
 
 class CategoryModelViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategoryModelSerializer
