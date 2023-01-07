@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from orders.models import Shop, Product, Category
+from orders.models import Shop, Product, Category, SubCategory
 
 
 class ShopModelSerializer(ModelSerializer):
@@ -18,4 +18,10 @@ class ProductModelSerializer(ModelSerializer):
 class CategoryModelSerializer(ModelSerializer):
     class Meta:
         model = Category
+        exclude = ()
+
+
+class SubCategoryModelSerializer(ModelSerializer):
+    class Meta:
+        model = SubCategory
         exclude = ()
