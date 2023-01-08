@@ -1,4 +1,5 @@
-from django.db.models import Model, CASCADE, CharField, IntegerField, ImageField, ForeignKey
+from django.db.models import Model, CASCADE, CharField, IntegerField, ImageField, ForeignKey, DecimalField, PROTECT, \
+    TextField, SET_NULL
 
 
 class Shop(Model):
@@ -22,8 +23,8 @@ class SubCategory(Model):
 
 class Product(Model):
     name = CharField(max_length=255)
-    price = IntegerField(default=0)
+    price = DecimalField(max_digits=9, decimal_places=2, default=0)
     img = ImageField(upload_to='products/')
-    description = CharField(max_length=500)
-    category = ForeignKey('Category', CASCADE)
-    shop = ForeignKey('Shop', CASCADE)
+    description = TextField(max_length=500)
+    category = ForeignKey('orders.Category', CASCADE)
+    shop = ForeignKey('orders.Shop', SET_NULL, null=True, blank=True)
