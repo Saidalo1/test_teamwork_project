@@ -24,7 +24,15 @@ class SubCategory(Model):
 class Product(Model):
     name = CharField(max_length=255)
     price = DecimalField(max_digits=9, decimal_places=2, default=0)
-    img = ImageField(upload_to='products/')
     description = TextField()
     category = ForeignKey('orders.Category', CASCADE)
     shop = ForeignKey('orders.Shop', SET_NULL, null=True, blank=True)
+
+    @property
+    def get_images(self):
+        return self.productimage_set.all()
+
+
+class ProductImage(Model):
+    image = ImageField(upload_to='product/')
+    product = ForeignKey('orders.Product', CASCADE)
